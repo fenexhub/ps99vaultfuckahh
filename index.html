@@ -1,62 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PS99Vault | #1 PS99 Fair Gaming Platform</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080a12" />
+  <title>PS99Vault — Play. Win. Trade.</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{fontFamily:{display:['"Space Grotesk"','sans-serif'],body:['Inter','sans-serif']}}}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    body { background-color: #121214; color: #ffffff; font-family: 'Inter', sans-serif; }
-    .glass-card { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .glow-orange { box-shadow: 0 0 20px rgba(255, 107, 0, 0.35); }
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #18181b; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#080a12;color:#f7f8fb;font-family:Inter,sans-serif}button{font:inherit;cursor:pointer}.shell{background:radial-gradient(circle at 78% -10%,rgba(255,159,58,.16),transparent 30%),radial-gradient(circle at 10% 15%,rgba(81,69,255,.13),transparent 32%),#080a12}.glass{background:linear-gradient(145deg,rgba(24,28,43,.91),rgba(13,16,27,.82));border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.24)}.card{background:linear-gradient(145deg,#1b2030,#111522);border:1px solid rgba(255,255,255,.08);transition:.25s ease}.card:hover{transform:translateY(-4px);border-color:rgba(255,168,70,.6);box-shadow:0 16px 35px rgba(0,0,0,.3)}.orange{color:#ffad59}.btn{transition:.2s ease}.btn:hover{transform:translateY(-1px);filter:brightness(1.12)}.tab.active{color:#fff;background:#242a3c}.pet{background:radial-gradient(circle at 35% 25%,#fff5bd,#ff9b38 28%,#9349ff 70%,#181c30);box-shadow:inset 0 0 25px rgba(255,255,255,.24),0 10px 30px rgba(255,126,39,.2)}.pet.blue{background:radial-gradient(circle at 35% 25%,#d9ffff,#43bdfb 32%,#5962ff 72%,#181c30)}.pet.pink{background:radial-gradient(circle at 35% 25%,#fff1fc,#ff73c8 32%,#8746ff 72%,#181c30)}.pet.green{background:radial-gradient(circle at 35% 25%,#edffd9,#8de36c 32%,#148e84 72%,#181c30)}.pulse{animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.55;transform:scale(1.03)}}.grid-bg{background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:30px 30px}.hide{display:none!important}
   </style>
 </head>
-<body class="h-screen flex flex-col overflow-hidden custom-scrollbar">
-
-  <!-- Top Navigation Header -->
-  <header class="h-16 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md px-4 flex items-center justify-between shrink-0 z-30">
-    <div class="flex items-center gap-4">
-      <div class="flex items-center gap-2 font-black text-xl tracking-wider cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-400 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
-          <i class="fa-solid fa-vault"></i>
-        </div>
-        <span>PS99<span class="text-orange-500">VAULT</span></span>
-      </div>
-    </div>
-
-    <!-- Center Stats / Global Info -->
-    <div class="hidden md:flex items-center gap-6 text-xs font-semibold text-zinc-400">
-      <div class="flex items-center gap-2 bg-zinc-900/80 px-3 py-1.5 rounded-lg border border-zinc-800">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>PROVABLY FAIR</span>
-      </div>
-      <div class="flex items-center gap-2 bg-zinc-900/80 px-3 py-1.5 rounded-lg border border-zinc-800">
-        <i class="fa-solid fa-gem text-cyan-400"></i>
-        <span>INSTANT TRADES</span>
-      </div>
-    </div>
-
-    <!-- Right Side Actions & Profile -->
-    <div class="flex items-center gap-3">
-      <!-- Roblox Connect Button -->
-      <button onclick="toggleModal('robloxLoginModal', true)" class="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 px-3 py-2 rounded-xl text-xs font-bold transition">
-        <i class="fa-solid fa-user-shield text-orange-500"></i>
-        <span id="headerUsername">Connect Roblox</span>
-      </button>
-
-      <!-- Wallet Button -->
-      <button onclick="toggleModal('walletModal', true)" class="flex items-center gap-2 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-bold px-4 py-2 rounded-xl text-xs shadow-lg shadow-orange-600/20 transition">
-        <i class="fa-solid fa-wallet"></i>
-        <span>Wallet</span>
-      </button>
-
-      <!-- Balance Badge -->
-      <div class="flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-3 py-2 rounded-xl text-xs font-bold">
-        <i class="fa-solid fa-gem text-cyan-400"></i>
-        <span id="userGemBalance">0</span>
-      </div>
-    </div>
+<body class="shell min-h-screen">
+  <div class="max-w-[1500px] mx-auto min-h-screen flex flex-col">
+    <header class="h-[76px] px-5 lg:px-8 flex items-center justify-between border-b border-white/[.07] bg-[#0b0d16]/80 backdrop-blur-xl sticky top-0 z-20">
+      <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-700 grid place-items-center shadow-lg shadow-orange-500/20"><i class="fa-solid fa-cubes-stacked"></i></div><div class="font-display font-bold text-[19px] tracking-tight">PS99<span class="orange">VAULT</span><div class="text-[9px] tracking-[.25em] text-slate-500 font-body font-semibold">FAIR PLAY ECONOMY</div></div></div>
+      <nav class="hidden lg:flex gap-1 text-sm text-slate-400"><button class="tab active px-4 py-2 rounded-xl" data-tab="lobby">Lobby</button><button class="tab px-4 py-2 rounded-xl" data-tab="games">Games</button><button class="tab px-4 py-2 rounded-xl" data-tab="leaderboard">Leaderboard</button><button class="tab px-4 py-2 rounded-xl" data-tab="fairness">Fairness</button></nav>
+      <div class="flex items-center gap-2"><button id="connect" class="btn hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-white/[.05] border border-white/10 text-xs font-semibold"><i class="fa-brands fa-roblox text-orange-400"></i><span>Connect Roblox</span></button><button id="wallet" class="btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-[#1b1006] text-xs font-extrabold shadow-lg shadow-orange-500/20"><i class="fa-solid fa-wallet"></i>Wallet</button><div class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-[#141827] border border-white/10 text-sm font-bold"><i class="fa-solid fa-gem text-cyan-300"></i><span id="balance">12,480</span></div></div>
+    </header>
+    <main class="flex-1 grid-bg px-5 lg:px-8 py-7">
+      <section class="glass rounded-3xl p-6 lg:p-9 overflow-hidden relative"><div class="absolute -right-16 -top-24 w-72 h-72 rounded-full bg-orange-500/10 blur-3xl"></div><div class="max-w-3xl relative"><div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-[11px] text-emerald-300 font-bold tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-emerald-300 pulse"></span> 2,847 PLAYERS ONLINE</div><h1 class="font-display text-4xl lg:text-6xl font-bold leading-[1.02] mt-5">Your pets.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-amber-200 to-orange-500">Your luck.</span></h1><p class="text-slate-400 mt-4 max-w-xl leading-relaxed">The smoothest PS99 trading casino. Spin, risk and win exclusive pets with provably fair drops and instant vault payouts.</p><div class="flex flex-wrap gap-3 mt-7"><button class="btn px-5 py-3 rounded-xl bg-white text-slate-950 font-bold text-sm" data-scroll="games">Explore games <i class="fa-solid fa-arrow-right ml-2"></i></button><button class="btn px-5 py-3 rounded-xl bg-white/[.05] border border-white/10 text-sm font-semibold" id="how"><i class="fa-solid fa-shield-halved mr-2 text-emerald-300"></i>How fairness works</button></div></div><div class="hidden xl:block absolute right-16 bottom-0 w-64 h-56"><div class="pet blue absolute right-0 bottom-7 w-40 h-40 rounded-[38%] rotate-6 grid place-items-center text-6xl"><span>🐾</span></div><div class="pet pink absolute left-0 bottom-0 w-28 h-28 rounded-[40%] -rotate-12 grid place-items-center text-4xl"><span>✦</span></div></div></section>
+      <section class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mt-10"><div><div class="text-orange-400 text-xs font-bold tracking-[.2em] uppercase">Live vault</div><h2 class="font-display text-3xl font-bold mt-2">Pick your game</h2><p class="text-slate-500 text-sm mt-1">Fast rounds. Big drops. Zero guesswork.</p></div><div class="flex gap-1 p-1 rounded-xl bg-[#111522] border border-white/[.06] text-xs font-semibold"><button class="filter active px-4 py-2 rounded-lg bg-[#272e42]" data-filter="all">All games</button><button class="filter px-4 py-2 rounded-lg text-slate-400" data-filter="popular">Popular</button><button class="filter px-4 py-2 rounded-lg text-slate-400" data-filter="new">New</button></div></section>
+      <section id="games" class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-5"><article class="card rounded-2xl p-5 relative overflow-hidden" data-type="popular"><div class="absolute right-0 top-0 px-3 py-1.5 text-[10px] font-bold text-orange-200 bg-orange-500/15 rounded-bl-xl">HOT</div><div class="flex justify-between items-start"><div class="w-16 h-16 rounded-2xl pet grid place-items-center text-3xl">🐉</div><div class="text-right text-xs text-slate-500"><span class="block text-emerald-300 font-bold">● LIVE</span>416 playing</div></div><h3 class="font-display font-bold text-xl mt-5">Dragon Rush</h3><p class="text-xs text-slate-500 mt-1">Climb the multiplier before it flies.</p><div class="flex items-center justify-between mt-6"><span class="text-xs text-slate-500">Entry from <b class="text-slate-300">100 gems</b></span><button class="play btn px-3 py-2 rounded-lg bg-orange-500 text-slate-950 text-xs font-bold" data-game="Dragon Rush">Play <i class="fa-solid fa-chevron-right ml-1"></i></button></div></article><article class="card rounded-2xl p-5 relative overflow-hidden" data-type="popular"><div class="absolute right-0 top-0 px-3 py-1.5 text-[10px] font-bold text-cyan-200 bg-cyan-500/15 rounded-bl-xl">2X REWARDS</div><div class="flex justify-between items-start"><div class="w-16 h-16 rounded-2xl pet blue grid place-items-center text-3xl">🌊</div><div class="text-right text-xs text-slate-500"><span class="block text-emerald-300 font-bold">● LIVE</span>289 playing</div></div><h3 class="font-display font-bold text-xl mt-5">Aqua Flip</h3><p class="text-xs text-slate-500 mt-1">Choose a card. Chase the jackpot.</p><div class="flex items-center justify-between mt-6"><span class="text-xs text-slate-500">Entry from <b class="text-slate-300">50 gems</b></span><button class="play btn px-3 py-2 rounded-lg bg-orange-500 text-slate-950 text-xs font-bold" data-game="Aqua Flip">Play <i class="fa-solid fa-chevron-right ml-1"></i></button></div></article><article class="card rounded-2xl p-5" data-type="new"><div class="flex justify-between items-start"><div class="w-16 h-16 rounded-2xl pet pink grid place-items-center text-3xl">🦄</div><div class="text-right text-xs text-slate-500"><span class="block text-emerald-300 font-bold">● LIVE</span>127 playing</div></div><h3 class="font-display font-bold text-xl mt-5">Pet Roulette</h3><p class="text-xs text-slate-500 mt-1">Spin for rare and huge exclusives.</p><div class="flex items-center justify-between mt-6"><span class="text-xs text-slate-500">Entry from <b class="text-slate-300">250 gems</b></span><button class="play btn px-3 py-2 rounded-lg bg-orange-500 text-slate-950 text-xs font-bold" data-game="Pet Roulette">Play <i class="fa-solid fa-chevron-right ml-1"></i></button></div></article><article class="card rounded-2xl p-5" data-type="new"><div class="flex justify-between items-start"><div class="w-16 h-16 rounded-2xl pet green grid place-items-center text-3xl">🍀</div><div class="text-right text-xs text-slate-500"><span class="block text-emerald-300 font-bold">● LIVE</span>84 playing</div></div><h3 class="font-display font-bold text-xl mt-5">Lucky Crate</h3><p class="text-xs text-slate-500 mt-1">Open a crate packed with value.</p><div class="flex items-center justify-between mt-6"><span class="text-xs text-slate-500">Entry from <b class="text-slate-300">1,000 gems</b></span><button class="play btn px-3 py-2 rounded-lg bg-orange-500 text-slate-950 text-xs font-bold" data-game="Lucky Crate">Play <i class="fa-solid fa-chevron-right ml-1"></i></button></div></article></section>
+      <section class="grid lg:grid-cols-[1.4fr_1fr] gap-4 mt-10"><div class="glass rounded-2xl p-5"><div class="flex justify-between items-center"><div><h3 class="font-display font-bold text-lg">Live drops</h3><p class="text-xs text-slate-500 mt-1">Winning moments, updated live</p></div><span class="text-xs text-emerald-300 font-semibold"><i class="fa-solid fa-circle text-[7px] mr-1"></i>Live feed</span></div><div id="feed" class="mt-4 space-y-2"><div class="flex items-center justify-between p-3 rounded-xl bg-white/[.035] text-sm"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg pet pink grid place-items-center">✦</div><div><b>Starfall</b><span class="text-slate-500 text-xs block">won Rainbow Unicorn</span></div></div><strong class="text-orange-300 text-xs">+18,400 gems</strong></div><div class="flex items-center justify-between p-3 rounded-xl bg-white/[.035] text-sm"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg pet blue grid place-items-center">✦</div><div><b>PixelKing</b><span class="text-slate-500 text-xs block">won Titanic Blue Balloon</span></div></div><strong class="text-orange-300 text-xs">+7,250 gems</strong></div></div></div><div class="glass rounded-2xl p-5"><div class="flex justify-between"><div><h3 class="font-display font-bold text-lg">Top players</h3><p class="text-xs text-slate-500 mt-1">This week's winners</p></div><i class="fa-solid fa-ranking-star text-orange-300 text-xl"></i></div><div class="mt-4 space-y-3 text-sm"><div class="flex justify-between"><span><b class="text-orange-300 mr-3">01</b>VaultHunter</span><strong>248,900</strong></div><div class="flex justify-between"><span><b class="text-slate-400 mr-3">02</b>LuckyMew</span><strong>194,720</strong></div><div class="flex justify-between"><span><b class="text-amber-700 mr-3">03</b>AstroPet</span><strong>162,450</strong></div></div></div></section>
+    </main><footer class="px-5 lg:px-8 py-5 border-t border-white/[.06] flex flex-col sm:flex-row gap-3 justify-between text-[11px] text-slate-600"><span>© 2026 PS99Vault. Built for the PS99 community.</span><span><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> Virtual items only · Play responsibly · Provably fair</span></footer>
+  </div>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-20 opacity-0 transition-all duration-300 z-50 px-5 py-3 rounded-xl bg-[#202638] border border-white/10 shadow-2xl text-sm font-semibold"></div>
+  <script>
+    const toast=(msg)=>{const el=document.querySelector('#toast');el.textContent=msg;el.classList.remove('translate-y-20','opacity-0');setTimeout(()=>el.classList.add('translate-y-20','opacity-0'),2300)};
+    document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');toast(`${b.textContent} is ready to explore`)});
+    document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active','bg-[#272e42]'));b.classList.add('active','bg-[#272e42]');document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.filter!=='all'&&c.dataset.type!==b.dataset.filter))});
+    document.querySelectorAll('.play').forEach(b=>b.onclick=()=>toast(`${b.dataset.game} is opening — connect Roblox to play`));
+    document.querySelector('#connect').onclick=()=>toast('Roblox connection flow opened');document.querySelector('#wallet').onclick=()=>toast('Wallet is ready — connect Roblox to deposit items');document.querySelector('#how').onclick=()=>toast('Every round uses a public seed you can verify');document.querySelectorAll('[data-scroll]').forEach(b=>b.onclick=()=>document.querySelector('#games').scrollIntoView({behavior:'smooth'}));
+  </script>
+</body></html>
